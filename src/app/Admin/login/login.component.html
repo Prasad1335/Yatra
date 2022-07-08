@@ -1,0 +1,28 @@
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-2 " >
+        <img src="{{hotels.hotelImage}}"  *ngFor="let hotels of hotels" class="d-block w-100 p-3 shadow" height="200px" alt="hotels">
+    </div>
+    <div class="col-md-6 mt-5">
+        <form class="shadow p-5">
+            <img src="\assets\images\yatra_logo.svg" class="w-100" style="height:100px;">
+            <h4 class="text-danger p-3">Admin Login</h4>
+            <div class="mb-3">
+                <label>username</label>
+                <input type="text" class="form-control border border-warning mt-2" formControlName="username"
+                    placeholder="enter username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="text" class="form-control border border-warning mt-2" formControlName="password"
+                    placeholder="enter password" class="form-control">
+            </div>
+            <button type="submit" routerLink="/admin/master-navbar" class="btn btn-danger">Submit</button>
+        </form>
+    </div>
+    
+    <div class="col-md-2 " >
+        <img src="{{hotels.hotelImage}}"  *ngFor="let hotels of hotels2" class="d-block w-100 p-3 shadow" height="200px" alt="hotels">
+    </div>
+</div>

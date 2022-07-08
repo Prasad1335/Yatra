@@ -1,0 +1,117 @@
+<style>
+    .btn-margin {
+        margin-left: 20px;
+    }
+</style>
+
+<wesite-navigation-bar></wesite-navigation-bar>
+<div class="row " style="margin-top:90px ;">
+    <div class="col-md-5 active"style="position:fixed;">
+
+        <div class="row p-5" >
+            <div class="col-md-12  bg-muted p-5"
+                style=" box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                <h6 class="mb-4">Book Flights, Hotels and Holiday Packages</h6>
+                <button class="btn btn-outline-danger btn-margin">One-Way</button>
+                <button class="btn btn-outline-secondary btn-margin">Round-Trip</button>
+                <button class=" btn btn-outline-secondary btn-margin">Multi-City</button>
+                <div class="row mt-3 ">
+
+                    <div class="col-md-6 text-start">
+                        <p class="text-secondary fw-bold">Dapart From<br>
+                            <span class="text-dark fw-bold" style="font-size:17px ;"> 
+                                <select class="form-control mt-2" formControlName="fromAirportRefId">
+                                    <option value="" >Choose from Airport</option>
+                                    <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                        {{cty.cityName}}
+                                    </option>
+                                  </select> 
+                            </span><br>
+                        </p>
+                        <!-- <hr> -->
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p class="text-secondary fw-bold">Going To<br>
+                            <span class="text-dark fw-bold" style="font-size:17px ;"> 
+                                <span class="text-dark fw-bold" style="font-size:17px ;"> 
+                                    <select class="form-control mt-2" formControlName="fromAirportRefId">
+                                        <option value="" disabled>Choose from Airport</option>
+                                        <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                            {{cty.cityName}}
+                                        </option>
+                                      </select> 
+                                </span>
+                            </span><br>
+                        </p>
+                        <!-- <hr> -->
+                    </div>
+                    <div class="col-md-6 text-start">
+                        <p class="text-secondary fw-bold">Daparture Date<br>
+                            <span class="text-dark fw-bold" style="font-size:17px ;">
+                            <input type="date" class="form-control" name="">
+                            </span><br>
+                            <!-- <span>Monday</span> -->
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p class="text-secondary mt-3 ">return date<br>
+                            <span class="text-primary fw-bold" style="font-size:17px ;"> Book Round</span><br>
+                            <span class="text-primary">to save extra</span>
+                        </p>
+                        <hr>
+                    </div>
+                                     
+                    <div class="col-md-6 ">
+                        <button class="btn btn-primary p-3 float-start" style="width: 150px;">Check refund</button>
+                    </div>
+                    <div class="col-md-6 ">
+                        <button class="btn btn-danger p-3 float-end" routerLink="/flight-search" style="width: 150px;">Search Flight</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 p-5" style="position:absolute;left:700px">
+        <div class="row">
+            <div class="col-md-12 p-5">
+                <h2 class="text-danger">Yatra Flights</h2>
+                <h5> Flight Booking at Low-cost</h5>
+                <p class="" style="font-size:13px;">
+
+                    Flying in the post-COVID world is laden with uncertainties. There are protocols to be followed,
+                    additional
+                    documents to be submitted, tests results to be furnished, and only then are you allowed to board the
+                    flight.
+                    Helping you choose your flights in this post-pandemic world is Yatra.com that offers you flight
+                    tickets at
+                    reasonable prices, has made the process of flight booking the simplest it can possibly be, while
+                    offering
+                    easy refund procedures. If the pandemic has dented your travel budget, fret not. On Yatra, you will
+                    be able
+                    to find cheap air tickets to destinations of your choice, whether domestic or international. Thanks
+                    to its
+                    user-friendly interface and the discounts its runs from time to time, making flight ticket booking a
+                    breeze.
+                </p>
+            </div>
+            <div class="col-md-12">
+               <img src="assets\images\ad.jpg" class="w-100" style="height:100px;">
+            </div>
+            <div class="col-md-12 p-5">
+                <h2 class="text-danger">Why book with Yatra.com?</h2>
+                <p>7 Brilliant reasons Yatra should be your one-stop-shop!</p>
+                <h6>Book Flights, Hotels, Trains, Buses, Cruise and Holiday Packages</h6>
+                <p style="font-size:13px;">
+                    On Yatra.com, you can tailor your trip from end-to-end by scouring suitable flights and making your flight booking before proceeding with your hotel bookings. Yatra's vast hotel repository will see you through this process seamlessly. Any intervening journey can be conveniently planned by searching up relevant train connectivity and making an IRCTC ticket booking. Look up well-researched holiday packages, sift through cruise packages and finalise your entire trip on just one platform.
+                </p>
+            </div>
+            <div class="col-md-12">
+                <img src="assets\images\footer.jpg" class="w-100" style="height:300px;">
+             </div>
+            
+
+        </div>
+    </div>
+</div>

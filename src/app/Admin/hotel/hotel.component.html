@@ -1,0 +1,98 @@
+<!-- <p>hotel works!</p> -->
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Hotel List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Hotel
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>Hotel Name</th>
+                    <th>Hotel Star</th>
+                    <th>City Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of Hoteldata">
+                    <td>{{row.hotelId}}</td>
+                    <td>{{row.hotelName }}</td>
+                    <td>{{row.hotelStar}}</td>
+                    <td>{{row.city.cityName }}</td>
+                    <!-- <td>{{row['countryModel']['countryName']}}</td> -->
+                    <!-- <td>{{row.country.countryName}}</td> -->
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByHotelID(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteHotelDeatils(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="FormID==0" style="background-color:black;">Add New Hotel</h4>
+                    <h4 class="text-info p-3" *ngIf="FormID!=0" style="background-color:black;">Update Hotel record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="FormID" *ngIf="FormID!=0" formControlName="hotelId">
+                        <label class="mt-3 fw-bold">Hotel Name :</label>
+                        <input type="text" class="form-control border border-warning mt-2" formControlName="hotelName"
+                            placeholder="hotel Name" required="hotelName">
+                        <label class="mt-3 fw-bold">Hotel Star :</label>
+                        <!-- <input type="number" class="form-control border border-warning mt-2" formControlName="hotelStar" placeholder="hotel Star"
+                            required="hotelStar"> -->
+                        <select class="form-control border border-warning mt-2" formControlName="hotelStar">
+                            <option value="" disabled>Choose star</option>
+                            <option value="1">1 star</option>
+                            <option value="2">2 star</option>
+                            <option value="3">3 star </option>
+                            <option value="4">4 star</option>
+                            <option value="5">5 star</option>
+                            <option></option>
+                           
+                        </select>
+                        <label class="mt-3 fw-bold">City Name :</label>
+                        <!-- <input type="number" class="form-control border border-warning mt-2" formControlName="cityRefId" placeholder="cityRefId"
+                                required="cityRefId"> -->
+
+
+                        <select class="form-control border border-warning mt-2" formControlName="cityRefId">
+                            <option value="" disabled>Choose your profile</option>
+                            <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                {{cty.cityName}}
+                            </option>
+                        </select>
+
+
+                        <button class="btn btn-danger mt-3" *ngIf="FormID==0" (click)="postHotelDetails()"
+                            type="submit">Add Hotel</button>
+                        <button class="btn btn-danger mt-3" *ngIf="FormID!=0" (click)="updateHotelDetails()"
+                            type="submit">Update Hotel</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

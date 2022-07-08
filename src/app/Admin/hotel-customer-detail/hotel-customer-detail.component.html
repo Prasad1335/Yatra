@@ -1,0 +1,89 @@
+<!-- <p>hotel-customer-detail works!</p> -->
+
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Hotel Customer Detail List<span
+                    class="float-end"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#myModal">
+                        Add New Hotel Customer Detail
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>Hotel Name</th>
+                    <th>Amenities Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of hotelCustomerDetailData">
+                    <td>{{row.hotelCustomerDetailId}}</td>
+                    <td>{{row.hotel.hotelName }}</td>
+                    <td>{{row.amenities.amenitiesName }}</td>
+                    <!-- <td>{{row['countryModel']['countryName']}}</td> -->
+                    <!-- <td>{{row.country.countryName}}</td> -->
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByHotelCustomerDetailDataId(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteHotelCustomerDetail(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New HotelAmenitiesLink</h4>
+                    <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">update HotelAmenitiesLink record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="hotelAmenitiesLinkId">
+                        <label class="mt-3">hotelRefId :</label>
+                        <!-- <input type="number" class="form-control mt-2" formControlName="hotelRefId" placeholder="hotelRefId" -->
+                            <!-- required="hotelRefId"> -->
+                            <select class="form-control border border-warning mt-2" formControlName="hotelRefId">
+                                <option value="" disabled>Choose Hotel Name</option>
+                                <option *ngFor="let cty of hotelBookingData" [ngValue]="cty">
+                                    {{cty.hotelName}}
+                                </option>
+                              </select> 
+                        <label class="mt-3">amenitiesRefId :</label>
+                        <!-- <input type="number" class="form-control mt-2" formControlName="amenitiesRefId" placeholder="amenitiesRefId"
+                            required="amenitiesRefId"> -->
+                            <select class="form-control border border-warning mt-2" formControlName="amenitiesRefId">
+                                <option value="" disabled>Choose Amenities</option>
+                                <option *ngFor="let cty of customerdata" [ngValue]="cty">
+                                    {{cty.amenitiesName}}
+                                </option>
+                              </select> 
+
+                       
+                        <button class="btn btn-danger mt-3" *ngIf="FormId==0" (click)="postHotelCustomerDetails()"
+                            type="submit">Add Hotel Customer Detail</button>
+                        <button class="btn btn-danger mt-3" *ngIf="FormId!=0" (click)="updateHotelCustomerDetails()"
+                            type="submit">update Hotel Customer Detail</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

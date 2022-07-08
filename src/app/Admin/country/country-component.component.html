@@ -1,0 +1,81 @@
+<!-- <div class="content-wrapper">
+    
+    <div class="content p-2"> -->
+<master-navbar></master-navbar>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    <h3 class=" tbl-ttl-clr p-3">View All Country List<span
+                            class="float-end"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#myModal">
+                                Add New Country
+                            </button></span></h3>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-bordered text-center">
+                        <tr class="tbl-hd-clr">
+                            <th>Sr.No</th>
+                            <th>Country Code </th>
+                            <th>Country Name</th>
+                            <th>Country Short Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr *ngFor="let row of CountryData; index as i">
+                            <td>{{row.countryId}}</td>
+                            <td>{{row.countryCode }}</td>
+                            <td>{{row.countryName}}</td>
+                            <td>{{row.countryShortName}}</td>
+                            <td>
+                                <button class="btn btn-outline-info" (click)="GetByCountryID(row)" type="button"
+                                    data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-danger" (click)="deleteCountryDeatils(row)" type="button"
+                                    >Delete</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                            data-bs-dismiss="modal"></button>
+                        <form [formGroup]="formValue" class="border border-warning p-5">
+                            <h4 class="text-info p-3" *ngIf="CountryId==0" style="background-color:black;">Add New
+                                country</h4>
+                            <h4 class="text-info p-3" *ngIf="CountryId!=0" style="background-color:black;">update
+                                country record
+                            </h4>
+                            <hr>
+                            <div class="form-group">
+                                <input type="hidden" [id]="CountryId" *ngIf="CountryId!=0" formControlName="countryId">
+                                <label class="mt-3">country Code :</label>
+                                <input type="text" class="form-control mt-2" formControlName="countryCode"
+                                    placeholder="countryCode" required="countryCode">
+                                <label class="mt-3">country Name :</label>
+                                <input type="text" class="form-control mt-2" formControlName="countryName"
+                                    placeholder="countryName" required="countryName">
+                                <label class="mt-3">country Short Name :</label>
+                                <input type="text" class="form-control mt-2" formControlName="countryShortName"
+                                    placeholder="countryShortName" required="countryShortName">
+                                <button class="btn btn-danger mt-3" *ngIf="CountryId==0"
+                                    (click)="postCountriesDetails()" type="submit">Add Country</button>
+                                <button class="btn btn-danger mt-3" *ngIf="CountryId!=0"
+                                    (click)="updateCountryDetails()" type="submit">update Country</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div>
+</div> -->

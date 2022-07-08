@@ -1,0 +1,88 @@
+<!-- <p>flight-schedule works!</p>
+ -->
+
+<!-- <p>flight works!</p>-->
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Flight Schedule List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Flight Schedule
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>flightRefId</th>
+                    <th> departureDateTime</th>
+                    <th>arrivalDateTime</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of flightScheduledata">
+                    <td>{{row.flightScheduleId}}</td>
+                    <td>{{row.flight.flightCode}}</td>
+                    <td>{{row. departureDateTime|date:"dd-MMM-yyyy"}}</td>
+                    <td>{{row.arrivalDateTime|date:"dd-MMM-yyyy"}}</td>
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByFlightScheduleId(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteFlightScheduleDeatils(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New Flight Schedule
+                    </h4>
+                    <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">update Flight Schedule
+                        record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="FlightId">
+                        <label class="mt-3">flight code :</label>
+                        <select class="form-control border border-warning mt-2" formControlName="flightRefId">
+                            <option value="" disabled>Choose flight code</option>
+                            <option *ngFor="let cty of flightData" [ngValue]="cty">
+                                {{cty.flightCode}}
+                            </option>
+                        </select>
+                        <label class="mt-3">Departure Date Time :</label>
+                        <input type="date" class="form-control border border-warning mt-2"
+                            formControlName="departureDateTime" required="departureDateTime">
+                        <label class="mt-3">Arrival Date Time :</label>
+                        <input type="date" class="form-control border border-warning mt-2"
+                            formControlName="arrivalDateTime" required="arrivalDateTime">
+
+
+                        <!-- <option *ngFor="let project of projects" [ngValue]="project">{{project?.name}}</option> -->
+                        <button class="btn btn-danger mt-3" *ngIf="FormId==0" (click)="postFlightScheduleDetails()"
+                            type="submit">Add Flight Schedule</button>
+                        <button class="btn btn-danger mt-3" *ngIf="FormId!=0" (click)="updateFlightScheduleDetails()"
+                            type="submit">update Flight Schedule</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

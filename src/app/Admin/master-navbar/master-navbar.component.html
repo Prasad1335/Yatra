@@ -1,0 +1,151 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+</style>
+</head>
+<body> -->
+
+<div id="mySidenav" class=" sidenav">
+  <div class="app-brand" style=" background: #39c48f;">
+    <!-- <a href="/admin">
+            <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="33" viewBox="0 0 30 33">
+              <g fill="none" fill-rule="evenodd">
+                <path class="logo-fill-yellow" fill="#faea70" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                
+              </g>
+              
+            </svg>
+          
+          </a> -->
+    <span class="brand-name ">
+      <span class="closebtn p-3" style="font-size:20px ;color: red; background-color: #39c48f;"> <img
+          src="\assets\images\yatra_logo.svg" class="w-100" style="height:50px;"></span>
+    </span>
+  </div>
+  <!-- <a href="javascript:void(0)" style="background-color:red ;" class="closebtn" onclick="closeNav()">&times;</a> -->
+  <ul class="nav sidebar-inner mt-5" id="sidebar-menu">
+
+    <li class="has-sub active expand">
+      <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#hotelBooking"
+        aria-expanded="false" aria-controls="product">
+        <i class="mdi mdi-view-dashboard-outline" style="color:#c0e660 ;"></i>
+        <span class="nav-text"><i class='fab fa-gitlab' style="color:#8b0a4f  ;font-size:30px;"></i> Hotel
+          Booking</span> <b class="caret"></b>
+      </a>
+      <ul class="collapse" id="hotelBooking" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/country-component">
+              <span class="nav-text text-uppercase">Country</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/city">
+              <span class="nav-text text-uppercase">City</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/hotel">
+              <span class="nav-text text-uppercase">Hotel</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/amenities">
+              <span class="nav-text text-uppercase">Amenities</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/hotel-amenities-link">
+              <span class="nav-text text-uppercase" style="font-size:12px ;">Hotel Amenities Link</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/hotel-booking">
+              <span class="nav-text text-uppercase">Hotel Booking</span>
+            </a>
+          </li>
+
+        </div>
+      </ul>
+    </li>
+    <li class="has-sub active expand">
+      <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#flightBooking"
+        aria-expanded="false" aria-controls="dashboard">
+        <i class="mdi mdi-view-dashboard-outline" style="color:#c0e660 ;"></i>
+        <span class="nav-text"><i class='fab fa-gitlab' style="color:#8b0a4f ;font-size:30px;"></i> Flight
+          Booking</span> <b class="caret"></b>
+      </a>
+      <ul class="collapse" id="flightBooking" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/airport">
+              <span class="nav-text text-uppercase">Airport</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/airline">
+              <span class="nav-text text-uppercase">Airline</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/flight">
+              <span class="nav-text text-uppercase">Flight</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/flight-schedule">
+              <span class="nav-text text-uppercase">Flight Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/flight-booiking">
+              <span class="nav-text text-uppercase">Flight Booking</span>
+            </a>
+          </li>
+
+        </div>
+      </ul>
+    </li>
+    <li class="has-sub active expand">
+      <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#customer"
+        aria-expanded="false" aria-controls="dashboard">
+        <i class="mdi mdi-view-dashboard-outline" style="color:#c0e660 ;"></i>
+        <span class="nav-text"><i class='fab fa-gitlab' style="color:#8b0a4f ;font-size:30px;"></i> Customers</span> <b
+          class="caret"></b>
+      </a>
+      <ul class="collapse" id="customer" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/customer">
+              <span class="nav-text text-uppercase">Customer</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/flight-customer-detail">
+              <span class="nav-text text-uppercase" style="font-size:12px ;">Flight Customer Detail</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidenav-item-link" routerLink="/admin/hotel-customer-detail">
+              <span class="nav-text text-uppercase" style="font-size:12px ;">Hotel Customer Detail </span>
+            </a>
+          </li>
+          
+        </div>
+      </ul>
+    </li>
+
+  </ul>
+</div>
+
+<div id="main" class="navbar navbar-static-top navbar-expand-lg ">
+  <div class="col-md-12  shadow p-3" id="about" style="font-size:30px;cursor:pointer" onclick="closeNav()"
+    onmouseover="openNav()">&#9776;<span class="text-danger text-center " style="font-size:18px ;"> Call center :
+      0120-6907420 ( Working Hours : 06:30 ) Email support: hotelservices@yatra.com</span><span
+     ><a  class="btn btn-danger float-end" routerLink="">Logout</a></span></div>
+  <!-- <span routerLink="">Logout</span> -->
+</div>

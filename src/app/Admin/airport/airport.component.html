@@ -1,0 +1,142 @@
+<!-- <p>Airport works!</p> -->
+<master-navbar></master-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Airport List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Airport
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <!-- <th>Sr.No</th> -->
+                    <th>Airport Code</th>
+                    <th>Airport Name</th>
+                    <th>Airport Address</th>
+                    <th>City Name</th>
+                    <th>Airport PinCode</th>
+                    <th>Airport Telephone1</th>
+                    <th>Airport Telephone2</th>
+                    <th>Airport Email1</th>
+                    <th>Airport Email2</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of Airportdata">
+                    <!-- <td>{{row.airportId}}</td> -->
+                    <td>{{row.airportCode}}</td>
+                    <td>{{row.airportName}}</td>
+                    <td>{{row.airportAddress}}</td>
+                    <td>{{row.city.cityName}}</td>
+                    <td>{{row.airportPinCode}}</td>
+                    <td>{{row.airportTelephone1}}</td>
+                    <td>{{row.airportTelephone2}}</td>
+                    <td>{{row.airportEmail1}}</td>
+                    <td>{{row.airportEmail2}}</td>
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByAirportID(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteAirportDetails(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog ">
+        <div class="modal-content " style="width:1000px;margin-left:-230px;">
+            <div class="modal-body  p-2">
+                <button type="button" class="btn-close float-end mt-3"
+                    style="margin-right: 10px; height:30px ;width: 30px;background-color: red;"
+                    data-bs-dismiss="modal"></button>
+                <div class="container-fluid border border-warning">
+                    <div class="row p-5 ">
+                        <div class="col-md-12">
+                            <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New Airport
+                            </h4>
+                            <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">Update Airport
+                                record
+                            </h4>
+                        </div>
+                        <div class="col-md-12 ">
+                            <hr>
+                            <form class="row" [formGroup]="formValue">
+                                <div class="col-md-8">
+                                    <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="airportId">
+                                    <label class="mt-3 fw-bold" fw-bold>Airport Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportName" placeholder="Airport Name" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mt-3 fw-bold">Airport Code<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportCode" placeholder="Airport Code" required>
+                                </div>
+                                <!-- <div class="col-3">
+                                    <label class="mt-3 fw-bold">Airport Address <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control border border-warning"
+                                        formControlName="airportAddress " placeholder="Airport Address " required>
+                                </div> -->
+                                <div class="col-md-7">
+                                    <label class="mt-3 fw-bold">City Name <span class="text-danger">*</span></label>
+                                    <select class="form-control border border-warning" formControlName="cityRefId">
+                                        <option value="" disabled>Choose City</option>
+                                        <option *ngFor="let cty of citydata" [ngValue]="cty">
+                                            {{cty.cityName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="mt-3 fw-bold">Pin Code <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportPinCode" placeholder="Airport Pin Code" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="mt-3 fw-bold">Address <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportAddress" placeholder="Airport Address" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mt-3 fw-bold">Telephone 1 <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control border border-warning"
+                                        formControlName="airportTelephone1" placeholder="Airport Telephone 1" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mt-3 fw-bold">Telephone 2 </label>
+                                    <input type="number" class="form-control border border-warning"
+                                        formControlName="airportTelephone2" placeholder="Airport Telephone 2" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mt-3 fw-bold">Email 1 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportEmail1" placeholder="Airport Email 1" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mt-3 fw-bold">Email 2</label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="airportEmail2" placeholder="Airline Email 2" required>
+                                </div>
+                                <div class="col-12 m-3">
+                                    <button class="btn btn-danger mt-3" *ngIf="FormId==0" (click)="postAirportDetails()"
+                                        type="submit">Add Airport</button>
+                                    <button class="btn btn-danger mt-3" *ngIf="FormId!=0"
+                                        (click)="updateAirportDetails()" type="submit">Update Airport</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal -->

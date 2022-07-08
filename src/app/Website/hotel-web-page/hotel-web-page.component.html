@@ -1,0 +1,177 @@
+
+<wesite-navigation-bar></wesite-navigation-bar>
+<style>
+    .btn-margin {
+        margin-left: 5px;
+    }
+</style>
+<div class="row " style="margin-top:120px ;">
+    <div class="col-md-5 active" style="position:fixed;">
+
+        <div class="row p-5">
+            <div class="col-md-12  bg-muted p-5"
+                style=" box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                <h6 class="mb-4">Book on India's Largest Hotel Network</h6>
+
+                <div class="row mt-3 ">
+                    <div class="col-md-12 ">
+                        <p class="text-secondary ">select city, Location hotel name(wordwide)</p>
+
+                        <select class="form-control mt-2"  formControlName="fromAirportRefId" style="border-bottom:1px solid red ;">
+                            <option value="" disabled >Choose select city, Location hotel name</option>
+                            <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                {{cty.cityName}}
+                            </option>
+                        </select>
+                        <hr>
+                    </div>
+                    <div class="col-md-6 text-start">
+                        <p class="text-secondary fw-bold">check-in<br>
+                            <span class="text-dark fw-bold" style="font-size:17px ;">
+                                <input type="date" class="form-control mt-2">
+                            </span><br>
+                            <!-- <span>Monday</span> -->
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p class="text-secondary fw-bold">check-out<br>
+                            <span class="text-dark fw-bold" style="font-size:17px ;"> 
+                                <input type="date"  class="form-control mt-2">
+                            </span><br>
+                            <!-- <span>Friday</span> -->
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="col-md-12 ">
+                        <p class="text-secondary float-start">Traveller and Hotel<br>
+                            2 Travellers , 1 Room</p>
+                    </div>
+                    <div class="col-md-6 ">
+
+                    </div>
+                    <div class="col-md-6 ">
+                        <button class="btn btn-danger p-3 float-end" routerLink="/hotel-search"
+                            style="width: 150px;">Search Hotel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 p-5" style="position:absolute;left:700px">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="assets\images\adshotel.jpg" class="w-100" style="height:px;">
+            </div>
+            <div class="col-md-12 p-5">
+                <h2 class="text-danger"> Yatra Hotels</h2>
+                <p> Why to book Hotels Online with Yatra.com</p>
+
+                <p style="font-size:13px;">
+                    We are back in the post-pandemic world with a bouquet of hotels across Indian cities ranging from
+                    leisure to business ones with a new outlook. Yatra who has always been on the forefront of assuring
+                    a comfortable stay which is a bang for your bucks, is offering you online hotel booking that
+                    guarantees you hygienic, sanitised rooms across hotels in India. Explore a raft of interesting
+                    features such as Clean Pass stays, travel again offers and long stay discounts encouraging you to
+                    travel again, make your hotel booking while keeping your anxieties at bay.</p>
+            </div>
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> Yatra Hotel Offers and Deals</h4>
+                <p style="font-size:13px;">
+                    As we resume travelling again whether it is for business, relaxation or to meet family, it would be
+                    great to know what there are that offer me protection in times of the pandemic, and if any of these
+                    hotel booking offers online are applicable for a long duration stay. We are extremely thrilled to
+                    offer hotel deals and hotel discount coupons that cater to this increasingly important requirement
+                    of our customers. You can browse them below:
+
+                </p>
+            </div>
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> The Travel Again Offer</h4>
+                <p style="font-size:13px;">
+
+                    An offer that could come in handy as you sift through our hotel repository to find one that most
+                    suits you. Using the coupon code SUMMER21, you can enjoy a grand discount of up to 50% on select
+                    domestic hotels. The offer is valid only for a limited period. In order to get the final tariff on
+                    your hotel, you need to login or sign up to your Yatra account. The offer enables you to redeem up
+                    to 10% eCash from your Yatra account. Additionally, you can earn extra 15% cashback in your Yatra
+                    wallet.
+                </p>
+            </div>
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> The Long Stay Hotel offer</h4>
+                <p style="font-size:13px;">
+
+                    With a Clean Pass guarantee across a range of our hotels, you can safely think of booking yourself
+                    an extended stay at one of these hotels across the country. The long stay discount is meant to
+                    encourage you from staying for a longish period at a property of your choice without being hassled
+                    about its hygiene standards and the basic essentials of sanitisation that need to be maintained post
+                    the Covid outbreak. The discount is valid for a limited period on select domestic hotels by offering
+                    you affordable rates with a long stay discount on clean and hygienic properties. You can also earn
+                    up to 15% eCash on every booking limited to select domestic hotels. The long stay discount can be
+                    availed across select , Gurgaon, Amritsar, Jaipur, Udaipur, Varanasi in the north; Bangalore,
+                    Hyderabad, Cochin, Chennai, Coimbatore, Mangalore, Trivandrum, Mysore, Tirupati in the south;
+                    Kolkata, Guwahati, Puri, Bhubaneswar in the east, and Pune and Mumbai in the west.
+
+                </p>
+            </div>
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> Clean Pass Hotels by Yatra</h4>
+                <p style="font-size:13px;">
+                    An initiative by Yatra to provide you with safe hotel stays came into existence to meet the growing
+                    concern over safety measures adopted by various hotels and whether or not it is safe to book with
+                    them once again. The Clean Pass tag assures that the basic sanitisation requirements are met by the
+                    service provider, such as sanitisation of the room and common areas, regular temperature checks of
+                    the hotel staff and guests entering the property among an assortment of other benefits.
+                </p>
+            </div>
+
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> Cities with Clean Pass hotels</h4>
+                <p style="font-size:13px;">
+
+                    The in cities extend to Goa, Puri, Bangalore and a host of others. If that Goa vacation has been
+                    long overdue, time you browsed our inventory to find yourself safe and hygienic hotels in Goa. Among
+                    the safety assured hotels in Goa that have earned the Clean Pass status, there is the Ginger Hotel
+                    in Panjim, The Rivasa Resort in Calangute, Rio Boutique in Bardez, Hotel Calangute Towers,
+                    Mariaariose - Melody of the Sea, and more. Each of these hotels follow safety prerequisites like
+                    sanitised rooms, sterilised indoors, trained staff, and follow all WHO guidelines. In order to get
+                    some of the best deals on these , without a hitch use the SUMMER21 coupon code and get up to 50%
+                    discount on select domestic hotels.
+
+                    If you live in Kolkata and have been planning a trip to Puri over the weekend to finally break the
+                    corona jinx and travel once again, you can book one of Yatra's safety assured hotels in Puri. You
+                    have an array to choose from, and each assure the highest standards of safety and hygiene as per
+                    government and WHO regulations. is a great property awarded the Clean Pass status, Hotel Sonar
+                    Bangla on the Sea Beach Road, the very plush Jamindars Palace, are some wonderful properties in Puri
+                    you can stay at after availing Yatra's 'SUMMER21' discount.
+
+                    An important IT hub and a big business city in the country, Bangalore is not far away from the Clean
+                    Pass tag. Yatra has a set of good business to leisure hotels that meet this criteria. Expect
+                    well-sanitised rooms with sterilised floors and social distancing norms maintained with minimal
+                    contact with the service staff among others, you can opt for a stay at , The Royale Senate Race
+                    Course, , among a host of others scattered across major locations in the city.
+                </p>
+            </div>
+
+            <div class="col-md-12 p-5">
+                <h4 class="text-danger"> The freedom of cancellation</h4>
+                <p style="font-size:13px;">
+
+                    Now you can book a domestic hotel with Yatra and avail the incredible benefit of . It gets even
+                    better, because you do not even need a code to avail this offer. Just login and go to your My
+                    Bookings page and go ahead with a hassle-free cancellation process. This is a cent percent free
+                    cancellation on select domestic hotels, each of which are equipped with the Clean Pass promise for
+                    your safety. You can also earn 15% cashback in your Yatra wallet.
+                </p>
+            </div>
+
+            <div class="col-md-12">
+                <img src="assets\images\footer.jpg" class="w-100" style="height:300px;">
+            </div>
+
+
+        </div>
+    </div>
+</div>

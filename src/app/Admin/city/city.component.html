@@ -1,0 +1,73 @@
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All City List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Country
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table- text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>city Name</th>
+                    <th>Country Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of CityData">
+                    <td>{{row.cityId}}</td>
+                    <td>{{row.cityName }}</td>
+                    <td>{{row.country.countryName}}</td>
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByCityId(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteCityDeatils(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="CitysId==0" style="background-color:black;">Add New country</h4>
+                    <h4 class="text-info p-3" *ngIf="CitysId!=0" style="background-color:black;">update country record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="CitysId" *ngIf="CitysId!=0" formControlName="cityId">
+                        <label class="mt-3">cityName :</label>
+                        <input type="text" class="form-control border border-warning mt-2" formControlName="cityName"
+                            placeholder="cityName" required="cityName">
+                        <label class="mt-3">countryRefId :</label>
+                        <select class="form-control border border-warning mt-2" formControlName="countryRefId">
+                            <option value="" disabled>Choose your profile</option>
+                            <option *ngFor="let cty of countrydata" [ngValue]="cty">
+                                {{cty.countryName}}
+                            </option>
+                        </select>
+                        <button class="btn btn-danger mt-3" *ngIf="CitysId==0" (click)="postCityDetails()"
+                            type="submit">Add Country</button>
+                        <button class="btn btn-danger mt-3" *ngIf="CitysId!=0" (click)="updateCityDetails()"
+                            type="submit">update Country</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

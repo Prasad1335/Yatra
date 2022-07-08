@@ -1,0 +1,135 @@
+<style>
+    .menu-icon {
+        color: grey;
+        font-size: 15px;
+
+    }
+
+    .menu-icon:hover {
+        color: rgb(212, 42, 42);
+        border-bottom: 2px solid red;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    a {
+        color: gray;
+    }
+
+    a:hover {
+        color: rgb(212, 42, 42);
+    }
+
+    li {
+        padding-left: 8px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg fixed-top" style="background-color:rgb(244, 235, 235) ;">
+                <div class="container-fluid">
+                    <a class="navbar-brand">
+                        <img src="assets\images\yatra_logo.svg" alt="" width="120" height="60">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link active logo " routerLink="/web-flight-page" aria-current="page"><i
+                                        class='fas fa-plane'></i>
+                                    <p>flights</p>
+                                </a>
+                            </li>
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link logo" routerLink="/hotel-web-page" aria-current="page"><i
+                                        class='fas fa-hotel'></i>
+                                    <p>Hotels</p>
+                                </a>
+                            </li>
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link logo" routerLink="/villa" aria-current="page"><i
+                                        class='fas fa-boxes'></i>
+                                    <p>Villas & Stays</p>
+                                </a>
+                            </li>
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link logo" routerLink="/bus" aria-current="page"><i
+                                        class='fas fa-bus'></i>
+                                    <p>Buses</p>
+                                </a>
+                            </li>
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link logo" routerLink="/holiday" aria-current="page"><i
+                                        class='fas fa-umbrella-beach'></i>
+                                    <p>Holidays</p>
+                                </a>
+                            </li>
+                            <li class="nav-item text-center menu-icon">
+                                <a class="nav-link logo" routerLink="/visa" aria-current="page"><i
+                                        class='fab fa-cc-visa'></i>
+                                    <p>Visa</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-auto mb-2  justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" data-bs-toggle="modal" data-bs-target="#myModallogin"
+                                    aria-current="page">My account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" routerLink="/admin" aria-current="page">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" aria-current="page">offers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" aria-current="page">Yatra for Your
+                                    Buissness</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModallogin">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form class="shadow p-5">
+                    <img src="\assets\images\yatra_logo.svg" class="w-100" style="height:100px;">
+                    <h4 class="text-danger p-3">user Login</h4>
+                    <div class="mb-3">
+                        <label>username</label>
+                        <input type="text" class="form-control border border-warning mt-2" formControlName="username"
+                            placeholder="enter username" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input type="text" class="form-control border border-warning mt-2" formControlName="password"
+                            placeholder="enter password" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                       <a href="#">Forgot password? Create New User </a>
+                    </div>
+                    <button type="submit" routerLink="/admin" class="btn btn-danger">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

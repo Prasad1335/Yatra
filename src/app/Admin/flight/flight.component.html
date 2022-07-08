@@ -1,0 +1,96 @@
+<!-- <p>flight works!</p>-->
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3" >View All Flight List<span
+                    class="float-end"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#myModal">
+                        Add New Country
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>Flight Code</th>
+                    <th>Airline Name</th>
+                    <th>fromAirportRefId</th>
+                    <th>toAirportRefId</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of Flightdata">
+                    <td>{{row.flightId}}</td>
+                    <td>{{row.flightCode }}</td>
+                    <td>{{row.airline.airlineName }}</td>
+                    <td>{{row.fromAirport.cityName}}</td>
+                    <td>{{row.toAirport.cityName }}</td>
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByFlightID(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteCountryDeatils(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New country</h4>
+                    <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">update country record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="flightId">
+                        <label class="mt-3">flight Code :</label>
+                        <input type="text" class="form-control border border-warning mt-2" formControlName="flightCode" placeholder="flight Code"
+                            required="flightCode">
+                        <label class="mt-3">Airline Name :</label> 
+                        <select class="form-control border border-warning mt-2" formControlName="airlineRefId">
+                            <option value="" disabled>Choose Airline Name</option>
+                            <option *ngFor="let cty of AirlineData" [ngValue]="cty">
+                                {{cty.airlineName}}
+                            </option>
+                          </select> 
+                          <label class="mt-3">From Airport:</label>
+                          <select class="form-control border border-warning mt-2" formControlName="fromAirportRefId">
+                            <option value="" disabled>Choose from Airport</option>
+                            <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                {{cty.cityName}}
+                            </option>
+                          </select> 
+                          <label class="mt-3">To Airport :</label>
+                          <select class="form-control border border-warning mt-2" formControlName="toAirportRefId">
+                            <option value="" disabled>Choose To Airport</option>
+                            <option *ngFor="let cty of CityData" [ngValue]="cty">
+                                {{cty.cityName}}
+                            </option>
+                          </select> 
+
+                       
+                        <button class="btn btn-danger mt-3" *ngIf="FormId==0" (click)="postFlightDetails()"
+                            type="submit">Add Country</button>
+                        <button class="btn btn-danger mt-3" *ngIf="FormId!=0" (click)="updateFlightDetails()"
+                            type="submit">update Country</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

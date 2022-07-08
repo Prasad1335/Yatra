@@ -1,0 +1,143 @@
+<!-- <p>customer works!</p> -->
+
+<!-- <p>Airport works!</p> -->
+<master-navbar></master-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Customer List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Customer
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>City Name</th>
+                    <th>Pin Code</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of customerdata">
+                    <td>{{row.customerId}}</td>
+                    <td>{{row.customerFirstName}}</td>
+                    <td>{{row.customerLastName}}</td>
+                    <td>{{row.customerDateOfBirth|date:"dd/MM/yyyy"}}</td>
+                    <td>{{row.customerAddress1}}</td>
+                    <td>{{row.customerAddress2}}</td>
+                    <td>{{row.city.cityName}}</td>
+                    <td>{{row.customerPinCode}}</td>
+                    <td>{{row.customerTelephone}}</td>
+                    <td>{{row.customerEmail}}</td>
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByCustomerID(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteCustomersDetails(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog ">
+        <div class="modal-content " style="width:1000px;margin-left:-230px;">
+            <div class="modal-body  p-2">
+                <button type="button" class="btn-close float-end mt-3"
+                    style="margin-right: 10px; height:30px ;width: 30px;background-color: red;"
+                    data-bs-dismiss="modal"></button>
+                <div class="container-fluid border border-warning">
+                    <div class="row p-5 ">
+                        <div class="col-md-12">
+                            <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New Customer
+                            </h4>
+                            <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">Update Customer
+                                record
+                            </h4>
+                        </div>
+                        <div class="col-md-12 ">
+                            <hr>
+                            <form class="row" [formGroup]="formValue">
+                                <div class="col-md-4">
+                                    <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="customerId">
+                                    <label class="mt-3 fw-bold" fw-bold>Customer First Name <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerFirstName" placeholder="customer First Name"
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mt-3 fw-bold">customer Last Name<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerLastName" placeholder="customer Last Name" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mt-3 fw-bold">Date of Birth <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control border border-warning"
+                                        formControlName="customerDateOfBirth" required>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="mt-3 fw-bold">City Name <span class="text-danger">*</span></label>
+                                    <select class="form-control border border-warning" formControlName="cityRefId">
+                                        <option value="" disabled>Choose City</option>
+                                        <option *ngFor="let cty of citydata" [ngValue]="cty">
+                                            {{cty.cityName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="mt-3 fw-bold">Pin Code <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerPinCode" placeholder=" Pin Code" required>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="mt-3 fw-bold">Telephone Phone <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerTelephone" placeholder="Telephone Phone" required>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="mt-3 fw-bold">Email <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerEmail" placeholder=" Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="mt-3 fw-bold">Address 1 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerAddress1" placeholder=" Address 1" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="mt-3 fw-bold">Address 2 </label>
+                                    <input type="text" class="form-control border border-warning"
+                                        formControlName="customerAddress2" placeholder=" Address 2" required>
+                                </div>
+                                <div class="col-12 m-3">
+                                    <button class="btn btn-danger mt-3" *ngIf="FormId==0"
+                                        (click)="postCustomersDetails()" type="submit">Add Customer</button>
+                                    <button class="btn btn-danger mt-3" *ngIf="FormId!=0"
+                                        (click)="updateCustomersDetails()" type="submit">Update Customer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

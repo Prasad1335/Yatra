@@ -1,0 +1,74 @@
+<master-navbar></master-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <h3 class=" tbl-ttl-clr p-3">View All Amenities List<span class="float-end"><button type="button"
+                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                        Add New Amenities
+                    </button></span></h3>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered text-center">
+                <tr class="tbl-hd-clr">
+                    <th>Sr.No</th>
+                    <th>Name Amenities</th>
+                    <th>Amenities Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr *ngFor="let row of AmenitiesData">
+                    <td>{{row.amenitiesId}}</td>
+                    <td>{{row.amenitiesName }}</td>
+                    <td>{{row.amenitiesDescription }}</td>
+                    <!-- <td>{{row['countryModel']['countryName']}}</td> -->
+                    <!-- <td>{{row.country.countryName}}</td> -->
+                    <td>
+                        <button class="btn btn-outline-info" (click)="GetByAmenitiesID(row)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#myModal">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteAmenitiesDeatils(row)"
+                            type="button">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <button type="button" class="btn-close float-end mt-2" style="position:absolute;left:90%;"
+                    data-bs-dismiss="modal"></button>
+                <form [formGroup]="formValue" class="border border-warning p-5">
+                    <h4 class="text-info p-3" *ngIf="FormId==0" style="background-color:black;">Add New Amenities</h4>
+                    <h4 class="text-info p-3" *ngIf="FormId!=0" style="background-color:black;">update Amenities record
+                    </h4>
+                    <hr>
+                    <div class="form-group">
+                        <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="cityId">
+                        <label class="mt-3">Amenities Name :</label>
+                        <input type="text" class="form-control mt-2 border border-warning"
+                            formControlName="amenitiesName" placeholder="Amenities Name" required="amenitiesName">
+                        <label class="mt-3">Amenities Description :</label>
+                        <input type="text" class="form-control mt-2 border border-warning"
+                            formControlName="amenitiesDescription" placeholder="Amenities Description"
+                            required="amenitiesDescription">
+
+                        <button class="btn btn-danger mt-3" *ngIf="FormId==0" (click)="postAmenitiesDetails()"
+                            type="submit">Add Amenities</button>
+                        <button class="btn btn-danger mt-3" *ngIf="FormId!=0" (click)="updateAmenitiesDetails()"
+                            type="submit">update Amenities</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

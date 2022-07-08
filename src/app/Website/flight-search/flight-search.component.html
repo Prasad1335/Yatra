@@ -1,0 +1,115 @@
+<wesite-navigation-bar></wesite-navigation-bar>
+
+<div class="row" style="margin-top:120px ;">
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-8 shadow mb-3 crd" *ngFor="let f of flightserch">
+                <div class="row text-center">
+                    <div class="col-2">
+                        <i class='fas fa-plane-departure' style='font-size:30px;color:rgb(190, 206, 84)'></i>
+                        <p>
+                            <span class="fw-bold text-danger"> {{f.airline.airlineName}}</span><br>
+                            <span class="text-primary" style="font-size:12px ;">{{f.flightCode}}</span>
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p>
+                            <span class="fw-bold text-info">{{f.fromAirport.cityName}}</span><br>
+                        </p>
+                    </div>
+                    <div class="col-1">To<br>
+                        <i class='fas fa-exchange-alt' style='font-size:20px;color: rgb(123, 109, 91);'></i>
+                    </div>
+                    <div class="col-2">
+                        <p>
+                            <span class="fw-bold text-info">{{f.toAirport.cityName}}</span><br>
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p>
+                            <span class="fw-bold">2h 15m</span><br>
+                            <span class="text-secondary" style="font-size:12px ;">Non Stop</span>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mt-2">
+                            <span class="fw-bold"><i class='fas fa-rupee-sign'></i>
+                                5,183
+                            </span>
+                            <span class="text-secondary" style="font-size:12px ;"><button data-bs-toggle="modal" data-bs-target="#myModalf"
+                                    class="btn btn-danger">Book</button></span>
+                        </p>
+                    </div>
+                    <hr style="background-color:lightgrey;">
+                </div>
+                <span class="float-start" style="font-size:12px ;">Flight Details</span>
+                <span class="float-end" style="font-size:12px ;">ecash<mark class="p-1"
+                        style="background-color: yellow;border-radius:5px;"><i class='fas fa-rupee-sign'></i>
+                        250</mark></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModalf">
+    <div class="modal-dialog ">
+        <div class="modal-content " >
+            <div class="modal-body  p-2">
+                <button type="button" class="btn-close float-end mt-3"
+                    style="margin-right: 10px; height:30px ;width: 30px;background-color: red;"
+                    data-bs-dismiss="modal"></button>
+                <div class="container-fluid border shadow ">
+                    <div class="row  ">
+                        <div class="col-md-12 p-md-5">
+                            <img src="\assets\images\yatra_logo.svg" class="w-100" style="height:100px;">
+                            <h4 class="text-danger p-3">Flight Booking Deatils <i class='fas fa-plane-departure'></i></h4>
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <hr>
+                            <!-- <form class="row" [formGroup]="formValue">
+                                <div class="col-md-6">
+                                    <input type="hidden" [id]="FormId" *ngIf="FormId!=0" formControlName="customerId">
+                                    <label class="mt-3 fw-bold" fw-bold>First Name<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border shadow "
+                                        formControlName="customerFirstName" placeholder="First Name"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="mt-3 fw-bold">Last Name<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border shadow "
+                                        formControlName="customerLastName" placeholder="Last Name" required>
+                                </div> 
+                                 <div class="col-md-6">
+                                    <label class="mt-3 fw-bold">Telephone<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border shadow "
+                                        formControlName="customerTelephone" placeholder="Telephone Phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="mt-3 fw-bold">Email <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control border shadow "
+                                        formControlName="customerEmail" placeholder=" Email" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="mt-3 fw-bold">Special Request <span class="text-danger">*</span></label>
+                                    <textarea class="form-control shadow" placeholder="Special Request"></textarea>
+                                </div>
+                                <div class="col-12 m-3">
+                                    <button class="btn btn-danger mt-3" 
+                                        (click)="postCustomersDetails()" type="submit">Book Flight</button>
+                                   
+                                </div>
+                            </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
